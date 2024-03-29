@@ -7,7 +7,7 @@ const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
 const model = genAI.getGenerativeModel({ model: "MODEL_NAME" });
 
-console.log(model)
+
 
 // ...
 
@@ -16,7 +16,7 @@ async function run() {
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
   const prompt =
-    "Write about how to land a job as a self taught software egineer.";
+    "Write about how to suceed in your next job interview";
 
   const result = await model.generateContent(prompt);
   const response = await result.response;
