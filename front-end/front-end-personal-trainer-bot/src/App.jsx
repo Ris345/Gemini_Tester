@@ -6,10 +6,12 @@ function App() {
 
   return (
     <div>
-      <h1>JINKO BOT </h1>
-      <section className='h-screen bg-blue-300 flex items-center justify-center m-12 text-3xl p-12 md:p-14 lg:0-16 xl:p-20'>
-      </section>
-      
+      <div className=" h-screen  w-6/12 border border-black">
+        <h1>Jinko Bot</h1>
+    </div>
+    <div className="h-20 border w-6/12  border-black">
+        <button>Ask</button>
+        </div>
   </div>
   )
 }
