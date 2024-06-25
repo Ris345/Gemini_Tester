@@ -4,10 +4,9 @@ import './App.css';
 function App() {
   const [userData, setUserData] = useState('');
   const [incomingData, setIncomingData] = useState(null);
-
+  console.log(incomingData)
   async function callBot() {
     const userInput = userData;
-    console.log(userData);
 
     try {
       const response = await fetch('http://localhost:3000/chat', {
@@ -20,8 +19,7 @@ function App() {
 
       const data = await response.json();
       console.log(data);
-      const botMessage = data.response;
-      console.log(botMessage);
+      const botMessage = data.msg;
       // Add chat message to the chat history
       setIncomingData(botMessage);
       // Scroll to the bottom of the chat history
@@ -31,10 +29,11 @@ function App() {
     }
   }
 
+
   return (
-    <>
+    <div className="fixed inset-0 flex justify-center items-center">
       <button
-        className="fixed bottom-4 right-4 inline-flex items-center justify-center text-sm font-medium disabled:pointer-events-none disabled:opacity-50 border rounded-full w-16 h-16 bg-black hover:bg-gray-700 m-0 cursor-pointer border-gray-200 bg-none p-0 normal-case leading-5 hover:text-gray-900"
+        className=" fixed bottom-4 right-4 inline-flex items-center justify-center text-sm font-medium disabled:pointer-events-none disabled:opacity-50 border rounded-full w-16 h-16 bg-black hover:bg-gray-700 m-0 cursor-pointer border-gray-200 bg-none p-0 normal-case leading-5 hover:text-gray-900"
         type="button" aria-haspopup="dialog" aria-expanded="false" data-state="closed">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -53,7 +52,7 @@ function App() {
 
         {/* Chat Container */}
         <div className="pr-4 h-[474px]" style={{ minWidth: '100%', display: 'table' }}>
-          {/* Chat Message AI */}
+          {incomingData}
           <div className="flex gap-3 my-4 text-gray-600 text-sm flex-1">
             <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
               <div className="rounded-full bg-gray-100 border p-1">
@@ -90,7 +89,7 @@ function App() {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
